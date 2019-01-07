@@ -6,19 +6,8 @@ package com.LinkedList;
 /**
  * @author Mahideep Tumati
  *
- *         Created on Sep 25, 2018
+ *         Created on Sep 25, 2018      
  */
-
-class Node {
-
-	int data;
-	Node next;
-
-	public Node(int data) {
-
-		this.data = data;
-	}
-}
 
 public class NthNodeFromEnd {
 
@@ -26,58 +15,42 @@ public class NthNodeFromEnd {
 
 	public static void main(String[] args) {
 
-		NthNodeFromEnd n = new NthNodeFromEnd();
-		Node n1 = new Node(1);
-		Node n2 = new Node(2);
-		Node n3 = new Node(3);
-		Node n4 = new Node(4);
-		Node n5 = new Node(5);
-		Node n6 = new Node(6);
+		head = new Node(1);
+		head.next = new Node(2);
+		head.next.next = new Node(3);
+		head.next.next.next = new Node(4);
+		head.next.next.next.next = new Node(5);
+		head.next.next.next.next.next = new Node(6);
+		head.next.next.next.next.next.next = new Node(7);
 
-		NthNodeFromEnd.head = n1;
-		n1.next = n2;
-		n2.next = n3;
-		n3.next = n4;
-		n4.next = n5;
-		n5.next = n6;
+		int n = 3;
 
-		printLinkedList();
-
-		nthNodeFromEnd(5);
+		Node nthNodeFromEnd = nthNodeFromEnd(head, n);
+		
+		System.out.println("Nth node from end is :: "+nthNodeFromEnd.data);
 
 	}
 
-	private static void printLinkedList() {
-
-		Node node = head;
-		while (node != null) {
-			System.out.print(node.data + " ->");
-			node = node.next;
-		}
-
-	}
-
-	
-	private static void nthNodeFromEnd(int n){
+	private static Node nthNodeFromEnd(Node node, int n) {
 		
 		
-		Node n1 = head,n2=head;
+		Node slowPointer=head;
+		Node fastPointer=head;
 		
-		int i=1;
-		while(n2 !=null && i<=n){
+		while(n-->0){
 			
-			n2=n2.next;
-			i++;
-		}
-		
-		while(n1!=null && n2!=null){
+			fastPointer=fastPointer.next;
 			
-			n1=n1.next;
-			n2=n2.next;
 		}
 		
-		System.out.println("\n"+n+"th element from end is "+n1.data);
+		while(fastPointer!=null){
+			
+			fastPointer=fastPointer.next;
+			slowPointer=slowPointer.next;
 		
+		}
+		
+		return slowPointer;
 		
 	}
 }

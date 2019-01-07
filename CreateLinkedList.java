@@ -9,19 +9,6 @@ package com.LinkedList;
  *         Created on Sep 10, 2018
  */
 // Linked list
-class Node {
-
-	int data;
-	Node next;
-
-	public Node(int data) {
-
-		this.data = data;
-		next = null;
-
-	}
-
-}
 
 public class CreateLinkedList {
 
